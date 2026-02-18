@@ -1,16 +1,17 @@
 import type { Metadata, Viewport } from 'next'
 import { Toaster } from 'sonner'
-import { QueryProvider } from '@/components/providers/QueryProvider'
-import { AuthProvider } from '@/contexts/AuthContext'
+import QueryProvider from '@/components/providers/QueryProvider'
+import { ThemeProvider } from '@/components/providers/ThemeProvider'
 import './globals.css'
 
-// TODO: 프로젝트에 맞게 메타데이터 수정
 export const metadata: Metadata = {
   title: {
-    default: 'My Project',
-    template: '%s | My Project',
+    default: 'MESA | 한양대학교 신소재공학부 학술동아리',
+    template: '%s | MESA',
   },
-  description: 'Next.js Admin Starter Kit',
+  description:
+    'MESA(Materials Science & Engineering Study Association) - 한양대학교 신소재공학부 학술동아리. 반도체·배터리·디스플레이·철강 등 재료 공학을 탐구합니다.',
+  keywords: ['MESA', '한양대학교', '신소재공학부', '학술동아리', '재료공학'],
 }
 
 export const viewport: Viewport = {
@@ -27,23 +28,17 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko" suppressHydrationWarning>
-      <body className="antialiased" suppressHydrationWarning>
+      <body className="antialiased bg-background text-foreground" suppressHydrationWarning>
         <QueryProvider>
-          <AuthProvider>
+          <ThemeProvider>
             {children}
-            <Toaster
-              position="top-center"
-              closeButton
-              theme="light"
-              toastOptions={{ duration: 3000 }}
-            />
-          </AuthProvider>
+          </ThemeProvider>
+          <Toaster
+            position="top-center"
+            closeButton
+            toastOptions={{ duration: 3000 }}
+          />
         </QueryProvider>
-        <noscript>
-          <div style={{ padding: '2rem', textAlign: 'center' }}>
-            이 사이트를 이용하려면 JavaScript를 활성화해 주세요.
-          </div>
-        </noscript>
       </body>
     </html>
   )
