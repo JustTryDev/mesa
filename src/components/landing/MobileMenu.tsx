@@ -1,6 +1,6 @@
 'use client'
 
-import { Instagram, ExternalLink, Youtube } from 'lucide-react'
+import { Instagram, Coffee, Youtube } from 'lucide-react'
 import Image from 'next/image'
 import {
   Sheet,
@@ -36,7 +36,7 @@ interface MobileMenuProps {
 /** SNS 플랫폼별 아이콘 매핑 */
 const snsIcons = {
   instagram: Instagram,
-  'naver-cafe': ExternalLink,
+  'naver-cafe': Coffee,
   youtube: Youtube,
   email: ExternalLink,
 }

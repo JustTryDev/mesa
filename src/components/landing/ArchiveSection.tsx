@@ -50,15 +50,15 @@ export function ArchiveSection() {
 
           {/* View More 버튼 */}
           <ScrollAnimation delay={0.4}>
-            <button
+            <a
+              href="https://iron-education-34c.notion.site/Archive-2f4ddf20de788063b064c1f430a202f8?source=copy_link"
+              target="_blank"
+              rel="noopener noreferrer"
               className="mt-10 inline-flex items-center gap-2 px-6 py-3 rounded-full bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 text-sm font-medium hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-colors group"
-              onClick={() => {
-                // TODO: 아카이브 페이지로 이동
-              }}
             >
               {t.archive.viewMore}
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </button>
+            </a>
           </ScrollAnimation>
         </div>
       </div>

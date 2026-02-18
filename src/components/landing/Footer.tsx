@@ -1,6 +1,6 @@
 'use client'
 
-import { Instagram, ExternalLink, Youtube, Mail } from 'lucide-react'
+import { Instagram, Coffee, Youtube, Mail, Phone } from 'lucide-react'
 import Image from 'next/image'
 import { SNS_LINKS, MESA_INFO } from '@/lib/constants/mesa'
 import { useTranslation } from '@/hooks/useTranslation'
@@ -15,10 +15,18 @@ import { useTranslation } from '@/hooks/useTranslation'
 /** SNS 플랫폼별 아이콘 매핑 */
 const snsIcons = {
   instagram: Instagram,
-  'naver-cafe': ExternalLink,
+  'naver-cafe': Coffee,
   youtube: Youtube,
   email: Mail,
 }
+
+/** 회장단 연락처 */
+const LEADER_CONTACTS = [
+  { name: '이준서', role: '회장', phone: '010-2213-2385' },
+  { name: '김훈종', role: '부회장', phone: '010-6643-2563' },
+  { name: '심은서', role: '부회장', phone: '010-7175-6136' },
+  { name: '김도관', role: '총무', phone: '010-5570-8495' },
+]
 
 export function Footer() {
   const { t } = useTranslation()
@@ -26,10 +34,9 @@ export function Footer() {
   return (
     <footer className="bg-zinc-950 text-zinc-400">
       <div className="mx-auto max-w-7xl px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* 로고 + 소개 */}
-          <div className="md:col-span-1">
-            {/* 로고 — 어두운 배경이므로 흰색 로고 사용 */}
+          <div>
             <div className="relative h-8 w-[120px] mb-3">
               <Image
                 src="/image/whitelogo.png"
@@ -46,22 +53,55 @@ export function Footer() {
             </p>
           </div>
 
-          {/* 연락처 */}
-          <div className="md:col-span-1">
+          {/* 연락처 — 이메일 + 인스타그램 */}
+          <div>
             <h3 className="text-sm font-semibold text-zinc-300 uppercase tracking-wider mb-4">
               {t.footer.contact}
             </h3>
-            <a
-              href={`mailto:${MESA_INFO.email}`}
-              className="flex items-center gap-2 text-sm text-zinc-500 hover:text-white transition-colors"
-            >
-              <Mail className="w-4 h-4" />
-              {MESA_INFO.email}
-            </a>
+            <div className="space-y-3">
+              <a
+                href={`mailto:${MESA_INFO.email}`}
+                className="flex items-center gap-2 text-sm text-zinc-500 hover:text-white transition-colors"
+              >
+                <Mail className="w-4 h-4 shrink-0" />
+                {MESA_INFO.email}
+              </a>
+              <a
+                href="https://www.instagram.com/hyu_mesa"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-sm text-zinc-500 hover:text-white transition-colors"
+              >
+                <Instagram className="w-4 h-4 shrink-0" />
+                @hyu_mesa
+              </a>
+            </div>
+          </div>
+
+          {/* 회장단 연락처 */}
+          <div>
+            <h3 className="text-sm font-semibold text-zinc-300 uppercase tracking-wider mb-4">
+              Executive
+            </h3>
+            <div className="space-y-2">
+              {LEADER_CONTACTS.map((leader) => (
+                <a
+                  key={leader.name}
+                  href={`tel:${leader.phone.replace(/-/g, '')}`}
+                  className="flex items-center gap-2 text-sm text-zinc-500 hover:text-white transition-colors"
+                >
+                  <Phone className="w-3.5 h-3.5 shrink-0" />
+                  <span>
+                    {leader.name} {leader.role}
+                    <span className="ml-2 text-zinc-600">{leader.phone}</span>
+                  </span>
+                </a>
+              ))}
+            </div>
           </div>
 
           {/* SNS 링크 */}
-          <div className="md:col-span-1">
+          <div>
             <h3 className="text-sm font-semibold text-zinc-300 uppercase tracking-wider mb-4">
               {t.footer.social}
             </h3>
