@@ -36,10 +36,17 @@ export function Header() {
   )
   const activeSection = useActiveSection(sectionIds)
 
-  // 스크롤 이벤트 감지 — 80px 이상 내리면 "스크롤됨" 상태
+  // 스크롤 이벤트 감지 — rAF로 프레임당 1번만 실행하여 성능 최적화
   useEffect(() => {
+    let ticking = false
     const handleScroll = () => {
-      setScrolled(window.scrollY > 80)
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          setScrolled(window.scrollY > 80)
+          ticking = false
+        })
+        ticking = true
+      }
     }
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)

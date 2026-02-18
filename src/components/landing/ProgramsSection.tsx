@@ -50,7 +50,8 @@ export function ProgramsSection() {
         alt=""
         fill
         className="object-cover"
-        quality={80}
+        quality={60}
+        loading="lazy"
       />
       {/* 검정 반투명 오버레이 — 배경 사진이 은은하게 보이면서 텍스트도 잘 읽히는 수준 */}
       <div className="absolute inset-0 bg-black/90" />

@@ -42,6 +42,7 @@ export function LeadershipSection() {
                       width={144}
                       height={144}
                       className="w-full h-full object-cover"
+                      loading="lazy"
                     />
                   ) : (
                     <User className="w-10 h-10 text-zinc-300 dark:text-zinc-600" />
