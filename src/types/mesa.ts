@@ -12,10 +12,12 @@ import type { LucideIcon } from 'lucide-react'
 export interface NavItem {
   /** 메뉴에 표시될 텍스트 (예: "About") */
   label: string
-  /** 이동할 경로 — 앵커(#about) 또는 페이지(/about) */
+  /** 이동할 경로 — 앵커(#about) 또는 외부 URL */
   href: string
   /** 스크롤 대상 섹션의 HTML id */
   sectionId?: string
+  /** true이면 새 탭에서 외부 링크로 열림 */
+  external?: boolean
 }
 
 /** 핵심 가치 카드 데이터 */

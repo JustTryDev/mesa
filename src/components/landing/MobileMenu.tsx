@@ -80,17 +80,31 @@ export function MobileMenu({
           <ul className="space-y-1">
             {NAV_ITEMS.map((item) => (
               <li key={item.label}>
-                <button
-                  onClick={() => handleClick(item.sectionId)}
-                  className={cn(
-                    'w-full text-left px-4 py-3 rounded-xl text-base font-medium transition-colors',
-                    activeSection === item.sectionId
-                      ? 'bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-white'
-                      : 'text-zinc-600 dark:text-zinc-400 hover:bg-zinc-50 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-white'
-                  )}
-                >
-                  {item.label}
-                </button>
+                {item.external ? (
+                  /* 외부 링크 — 새 탭에서 열기 */
+                  <a
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => onOpenChange(false)}
+                    className="block w-full text-left px-4 py-3 rounded-xl text-base font-medium transition-colors text-zinc-600 dark:text-zinc-400 hover:bg-zinc-50 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-white"
+                  >
+                    {item.label}
+                  </a>
+                ) : (
+                  /* 내부 섹션 스크롤 */
+                  <button
+                    onClick={() => handleClick(item.sectionId)}
+                    className={cn(
+                      'w-full text-left px-4 py-3 rounded-xl text-base font-medium transition-colors',
+                      activeSection === item.sectionId
+                        ? 'bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-white'
+                        : 'text-zinc-600 dark:text-zinc-400 hover:bg-zinc-50 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-white'
+                    )}
+                  >
+                    {item.label}
+                  </button>
+                )}
               </li>
             ))}
           </ul>

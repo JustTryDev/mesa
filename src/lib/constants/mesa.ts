@@ -32,9 +32,9 @@ import type {
 /** 네비게이션 메뉴 */
 export const NAV_ITEMS: NavItem[] = [
   { label: 'About', href: '#about', sectionId: 'about' },
-  { label: 'Activities', href: '#programs', sectionId: 'programs' },
-  { label: 'Archive', href: '#archive', sectionId: 'archive' },
-  { label: 'Notice', href: '#notice', sectionId: 'notice' },
+  { label: 'Activities', href: 'https://iron-education-34c.notion.site/Activities-2f4ddf20de7880c8997ec2313ffa056f', external: true },
+  { label: 'Archive', href: 'https://iron-education-34c.notion.site/Archive-2f4ddf20de788063b064c1f430a202f8', external: true },
+  { label: 'Notice', href: 'https://iron-education-34c.notion.site/NOTICE-2f7ddf20de78809c81acfcf68415fe28', external: true },
 ]
 
 /** SNS 링크 */

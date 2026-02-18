@@ -104,26 +104,45 @@ export function Header() {
 
           {/* 데스크톱: 네비게이션 + 언어 토글 */}
           <div className="hidden md:flex items-center gap-8">
-            {NAV_ITEMS.map((item) => (
-              <button
-                key={item.label}
-                onClick={() => handleNavClick(item.sectionId)}
-                className={cn(
-                  'text-sm font-medium transition-colors relative py-1',
-                  activeSection === item.sectionId
-                    ? scrolled
-                      ? 'text-zinc-900 dark:text-white'
-                      : 'text-white'
-                    : scrolled
+            {NAV_ITEMS.map((item) =>
+              item.external ? (
+                /* 외부 링크 — 새 탭에서 Notion 페이지 열기 */
+                <a
+                  key={item.label}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={cn(
+                    'text-sm font-medium transition-colors relative py-1',
+                    scrolled
                       ? 'text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white'
-                      : 'text-zinc-400 hover:text-white',
-                  activeSection === item.sectionId &&
-                    'after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[2px] after:bg-current'
-                )}
-              >
-                {navLabels[item.label] || item.label}
-              </button>
-            ))}
+                      : 'text-zinc-400 hover:text-white'
+                  )}
+                >
+                  {navLabels[item.label] || item.label}
+                </a>
+              ) : (
+                /* 내부 섹션 스크롤 */
+                <button
+                  key={item.label}
+                  onClick={() => handleNavClick(item.sectionId)}
+                  className={cn(
+                    'text-sm font-medium transition-colors relative py-1',
+                    activeSection === item.sectionId
+                      ? scrolled
+                        ? 'text-zinc-900 dark:text-white'
+                        : 'text-white'
+                      : scrolled
+                        ? 'text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white'
+                        : 'text-zinc-400 hover:text-white',
+                    activeSection === item.sectionId &&
+                      'after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[2px] after:bg-current'
+                  )}
+                >
+                  {navLabels[item.label] || item.label}
+                </button>
+              )
+            )}
 
             {/* 언어 토글 버튼 — 국기 아이콘 포함 */}
             <button
