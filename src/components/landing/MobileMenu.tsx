@@ -38,7 +38,7 @@ const snsIcons = {
   instagram: Instagram,
   'naver-cafe': Coffee,
   youtube: Youtube,
-  email: ExternalLink,
+  email: Coffee,
 }
 
 export function MobileMenu({
