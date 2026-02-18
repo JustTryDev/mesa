@@ -5,6 +5,7 @@ import { ThemeProvider } from '@/components/providers/ThemeProvider'
 import './globals.css'
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://mesa-azure.vercel.app'),
   title: {
     default: 'MESA | 한양대학교 신소재공학부 학술동아리',
     template: '%s | MESA',
@@ -20,7 +21,7 @@ export const metadata: Metadata = {
     title: 'MESA | 한양대학교 신소재공학부 학술동아리',
     description:
       'MESA(Materials Science & Engineering Study Association) - 한양대학교 신소재공학부 학술동아리. 반도체·배터리·디스플레이·철강 등 재료 공학을 탐구합니다.',
-    images: [{ url: '/image/blacklogo.png', width: 600, height: 200, alt: 'MESA Logo' }],
+    images: [{ url: 'https://mesa-azure.vercel.app/image/blacklogo.png', width: 600, height: 200, alt: 'MESA Logo' }],
     type: 'website',
   },
   twitter: {
@@ -28,7 +29,7 @@ export const metadata: Metadata = {
     title: 'MESA | 한양대학교 신소재공학부 학술동아리',
     description:
       'MESA(Materials Science & Engineering Study Association) - 한양대학교 신소재공학부 학술동아리.',
-    images: ['/image/blacklogo.png'],
+    images: ['https://mesa-azure.vercel.app/image/blacklogo.png'],
   },
 }
 
