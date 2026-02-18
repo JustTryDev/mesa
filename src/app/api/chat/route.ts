@@ -14,9 +14,19 @@ import OpenAI from 'openai'
  *   서버에서만 API 키를 사용하면 안전합니다.
  */
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-})
+/**
+ * OpenAI 클라이언트를 함수 호출 시에만 생성 (lazy initialization)
+ *
+ * 왜 최상단에서 안 만드나요?
+ * → Vercel 같은 배포 환경에서는 빌드 시점에 환경변수가 없을 수 있습니다.
+ *   최상단에서 new OpenAI()를 하면 빌드할 때 API 키가 없어서 에러가 납니다.
+ *   함수 안에서 만들면 실제 요청이 들어올 때만 생성되므로 안전합니다.
+ */
+function getOpenAIClient() {
+  return new OpenAI({
+    apiKey: process.env.OPENAI_API_KEY,
+  })
+}
 
 /**
  * MESA 홈페이지 전체 내용 — 시스템 프롬프트에 포함
@@ -95,6 +105,7 @@ export async function POST(request: NextRequest) {
     }
 
     // OpenAI API 호출
+    const openai = getOpenAIClient()
     const completion = await openai.chat.completions.create({
       model: 'gpt-4o',
       messages: [
