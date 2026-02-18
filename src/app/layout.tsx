@@ -13,10 +13,6 @@ export const metadata: Metadata = {
   description:
     'MESA(Materials Science & Engineering Study Association) - 한양대학교 신소재공학부 학술동아리. 반도체·배터리·디스플레이·철강 등 재료 공학을 탐구합니다.',
   keywords: ['MESA', '한양대학교', '신소재공학부', '학술동아리', '재료공학'],
-  icons: {
-    icon: '/image/파비콘.jpg',
-    apple: '/image/파비콘.jpg',
-  },
   openGraph: {
     title: 'MESA | 한양대학교 신소재공학부 학술동아리',
     description:
